@@ -1,4 +1,46 @@
+
+************************************************
+# Project ke andar yeh cheezen shamil hain
+************************************************
+
+Docker Compose configuration for Jupyter aur Apache NiFi
+Terraform se S3 bucket create karne ka setup
+Sample customers.csv aur orders.csv files
+Python script jo files ko S3 mein upload karti hai
+Snowflake database, schema, warehouse aur storage integration SQL
+Snowflake stage aur Snowpipe SQL
+Snowflake Stream aur Task SQL
+Final customer aur order tables
+Error table
+Jupyter demo script
+.env.example
+.gitignore
+Troubleshooting aur security instructions
+README mein exact sequence diya gaya hai:
+Python environment create karna
+AWS credentials configure karna
+Terraform se S3 bucket banana
+Docker services start karna
+NiFi flow configure karna
+Snowflake SQL files run karna
+Sample data upload karna
+Snowpipe refresh karna
+Stream aur Task ka result verify karna
+Validation mein Python script aur sample CSV files successfully check ho gaye hain. Docker is sandbox mein installed nahi tha, is liye Docker Compose ko actually start karke test nahi kiya gaya. AWS aur Snowflake credentials available na hone ki wajah se cloud resources create nahi kiye gaye; README mein unki complete configuration di hui hai.
+snowflake-s3-nifi-pipeline.zip
+Archive · 12.00 KB
+S3 → Snowpipe → Snowflake Stream/Task Pipeline
+Markdown · 11.40 KB
+View all files in this task
+11:09 PM
+
+
+
+
+************************************************
 # S3 → Snowpipe → Snowflake Stream/Task Pipeline
+************************************************
+
 
 Yeh project image mein dikhaye gaye architecture ka runnable demo hai:
 
