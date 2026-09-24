@@ -1,0 +1,44 @@
+services:
+  jupyter:
+    image: quay.io/jupyter/scipy-notebook:latest
+    container_name: pipeline-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./sample_data:/home/jovyan/sample_data:ro
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: start-notebook.py --ServerApp.token=${JUPYTER_TOKEN:-pipeline}
+    restart: unless-stopped
+
+  nifi:
+    image: apache/nifi:1.28.1
+    container_name: pipeline-nifi
+    ports:
+      - "8443:8443"
+    environment:
+      SINGLE_USER_CREDENTIALS_USERNAME: ${NIFI_USERNAME:-admin}
+      SINGLE_USER_CREDENTIALS_PASSWORD: ${NIFI_PASSWORD:-ChangeThisPassword123!}
+      NIFI_WEB_HTTPS_PORT: 8443
+      NIFI_CLUSTER_IS_NODE: "false"
+      NIFI_WEB_PROXY_HOST: localhost:8443
+    volumes:
+      - nifi_conf:/opt/nifi/nifi-current/conf
+      - nifi_state:/opt/nifi/nifi-current/state
+      - nifi_db:/opt/nifi/nifi-current/database_repository
+      - nifi_flowfile:/opt/nifi/nifi-current/flowfile_repository
+      - nifi_content:/opt/nifi/nifi-current/content_repository
+      - nifi_provenance:/opt/nifi/nifi-current/provenance_repository
+      - ./sample_data:/opt/nifi/input
+    restart: unless-stopped
+
+volumes:
+  nifi_conf:
+  nifi_state:
+  nifi_db:
+  nifi_flowfile:
+  nifi_content:
+  nifi_provenance:
+
+# Production note: passwords ko .env mein change karein; demo defaults production ke liye use na karein.

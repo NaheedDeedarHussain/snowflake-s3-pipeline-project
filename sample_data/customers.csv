@@ -1,0 +1,4 @@
+customer_id,full_name,email,city,updated_at
+1001,Ali Khan,ali@example.com,Lahore,2026-09-24 10:00:00
+1002,Sara Ahmed,sara@example.com,Karachi,2026-09-24 10:05:00
+1003,Hamza Malik,hamza@example.com,Islamabad,2026-09-24 10:10:00

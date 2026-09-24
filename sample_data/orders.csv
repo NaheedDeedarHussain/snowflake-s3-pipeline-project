@@ -1,0 +1,4 @@
+order_id,customer_id,order_date,amount,status
+50001,1001,2026-09-24,125.50,PAID
+50002,1002,2026-09-24,80.00,PAID
+50003,1003,2026-09-24,210.75,PENDING
